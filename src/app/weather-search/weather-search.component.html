@@ -1,0 +1,13 @@
+<section class="weather-search">
+    <form [formGroup]="locationGroup" novalidate>
+        <label for="city">City</label>
+        <input #location formControlName="location" type="text" id="city" name="city" (input)="onSearchLocation($event, location.value)" [required]="true" />
+        <button type="submit" (click)="onSubmit($event, locationGroup)" >Add City</button>
+        <button type="button" (click)="clearWeatherData()">Clear</button>
+    </form>
+  <p>Form value: {{ locationGroup.value | json }}</p>
+  <p>Form status: {{ locationGroup.status | json }}</p>
+    <div>
+      <span class="info">City found: </span> {{data.name}}
+    </div>
+  </section>
