@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { WeatherCitiesComponent } from './weather-cities/weather-cities.component';
 import { WeatherCityComponent } from './weather-city/weather-city.component';
 import { WeatherSearchComponent } from './weather-search/weather-search.component';
-import { WeatherStorageComponent } from './weather-storage/weather-storage.component';
 import { HttpClientModule } from '@angular/common/http';
+import { WeatherProfileComponent } from './weather-profile/weather-profile.component';
+import { NotificationComponent } from './notification/notification.component';
+import { MaterialModule } from './modules/material.module';
 
 @NgModule({
   declarations: [
@@ -14,15 +17,19 @@ import { HttpClientModule } from '@angular/common/http';
     WeatherCitiesComponent,
     WeatherCityComponent,
     WeatherSearchComponent,
-    WeatherStorageComponent
+    WeatherProfileComponent,
+    NotificationComponent
   ],
   imports: [
     FormsModule, 
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserModule
+    BrowserAnimationsModule,
+    BrowserModule,
+    MaterialModule
   ],
   providers: [],
+  exports:[NotificationComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,35 +1,46 @@
-<!-- <article *ngFor="let item of weatherItems" class="weather-element">
-    <div class="col-1">
-    <h3>
-        {{item.Cityname}}
-    </h3>
-    <p class="info">{{item.description}}</p>
+<div class="container">
+  <div class="weather-side">
+    <div class="weather-gradient"></div>
+    <div class="date-container">
+      <h2 class="date-dayname">{{ weatherCity.cityname }}</h2>
+      <span class="location">UA</span>
     </div>
-    <div class="col-2">
-    <span class="temperature">
-        {{item.temperature}}°C
-    </span>
-    </div>
-</article>
-<article class="weather-element">
-    <div class="col-1">
-        <h3>{{ weatherItem.cityName }}</h3>
-        <p class="info">{{ weatherItem.description }}</p>
-    </div>
-    <div class="col-2">
-        <span class="temperature">{{ weatherItem.temperature }}°C</span>
-    </div>
-</article>     -->
-
-
-<article class="weather-city  afternoon-1">
-    <div>
-        <h2>{{ weatherCity.Cityname }}</h2>
-        <p>{{ weatherCity.description }}</p>
-    </div
-    >
     <div class="weather-icon">
-        <i class="icon-02d"></i>
-        <span>{{ weatherCity.temperature }}°C</span>
+      <img src="{{ weatherIconUrl }}{{weatherCity.icon }}{{ weatherIconSize }}"/>
     </div>
-</article>
+    <div class="weather-container"><i class="weather-icon" data-feather="sun"></i>
+      <h1 class="weather-temp">{{ weatherCity.temp }}°C</h1>
+      <h3 class="weather-desc">{{ weatherCity.main }}</h3>
+    </div>
+  </div>
+  <div class="info-side">
+    <div class="today-info-container">
+      <div class="today-info">
+        <div class="today-info-el"> <span class="title">FEELS LIKE:</span><span class="value">{{weatherCity.temp}} °C</span>
+          <div class="clear"></div>
+        </div>
+        <div class="today-info-el"> <span class="title">HUMIDITY:</span><span class="value">{{weatherCity.humidity}} %</span>
+          <div class="clear"></div>
+        </div>
+        <div class="today-info-el"> <span class="title">WIND SPEED:</span><span class="value">{{weatherCity.wind_speed}} km/h</span>
+          <div class="clear"></div>
+        </div>
+        <div class="today-info-el"> <span class="title">WIND DEGREE:</span><span class="value">{{weatherCity.wind_deg}}</span>
+          <div class="clear"></div>
+        </div>
+        <div class="today-info-el"> <span class="title">WIND GUST:</span><span class="value">{{weatherCity.wind_gust}} </span>
+          <div class="clear"></div>
+        </div>
+        <div class="today-info-el"> <span class="title">SEA LEVEL:</span><span class="value">{{weatherCity.humidity}}</span>
+          <div class="clear"></div>
+        </div>
+        <div class="today-info-el"> <span class="title">GROUND LEVEL:</span><span class="value">{{weatherCity.grnd_level}}</span>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="location-container">
+        <button class="location-button"> <i data-feather="map-pin"></i><span (click) = "removeCity(weatherCity)">Remove city</span></button>
+      </div>
+    </div>
+  </div>
+</div>

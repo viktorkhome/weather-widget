@@ -1,50 +1,7 @@
-<!-- <div class="weather-list">
-    <div class="weather-city  afternoon-1">
-        <div>
-            <h2>San Mateo</h2>
-            <p>Thursday 10:31</p>
-        </div
-        >
-        <div class="weather-icon">
-            <i class="icon-02d"></i>
-            <span>Clouds12</span>
-        </div>
-    </div>
-    <div class="weather-city  afternoon-2">
-        <div
-            ><h2>Toronto</h2>
-            <p>Thursday 13:31</p>
-        </div>
-            <div class="weather-icon">
-                <i class="icon-02d"></i>
-                <span>Clouds 18.38</span
-            ></div>
-    </div>
-    <div class="weather-city  evening-2">
-        <div>
-            <h2>Paris</h2>
-                <p>Thursday 19:31</p>
-            </div>
-            <div class="weather-icon">
-            <i class="icon-04n"></i>
-            <span>Clouds 11.02</span>
-        </div>
-    </div>
-    <div class="weather-city  dawn">
-        <div>
-            <h2>Sydney</h2>
-            <p>Friday 05:31</p>
-        </div>
-        <div class="weather-icon">
-            <i class="icon-03n"></i>
-            <span>Clouds13.14°C </span>
-        </div>
-    </div>
-</div> -->
-
 <div class="weather-cities">
     <app-weather-city 
-        *ngFor="let city of weatherCities"
+        *ngFor="let city of obs | async"
         [weatherCity] = "city">
     </app-weather-city>
 </div>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>

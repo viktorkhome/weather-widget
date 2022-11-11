@@ -1,33 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Profile } from '../interfaces/profile.interface';
+import { PROFILES } from '../storage/storage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
-  private profiles: Profile[];
 
-  constructor() {
-    this.profiles = [
-        {
-            profileName:  'Default Profile',
-            cities: ['Kyiv', 'Milan', 'Barcelona']
-        }
-    ]
-  }
+  constructor() {}
 
   saveNewProfile(cities: string[]) {
-      const profileName = `Profile ${this.profiles.length}`;
-      const newProfile = {profileName, cities};
-      this.profiles.push(newProfile);
+      const profileName = `Profile ${PROFILES.length}`;
+      const newProfile = { profileName, cities };
+      PROFILES.push(newProfile);
   }
 
   public getProfiles() {
-    return this.profiles;
+    return PROFILES;
   }
 
   public deleteProfile(profile: Profile) { 
-     this.profiles.splice(this.profiles.indexOf(profile), 1);
+    PROFILES.splice(PROFILES.indexOf(profile), 1);
   }
   
 }
