@@ -3,5 +3,5 @@ import { Profile } from '../interfaces/profile.interface';
 
 export const WEATHER_CITIES : WeatherCity[] = [];
 
-export const PROFILES : Profile[] = [ { profileName:  'Default Profile', cities: ['Kyiv'] } ];
+export const PROFILES : Profile[] = [];
 

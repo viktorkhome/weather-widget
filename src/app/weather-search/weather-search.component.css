@@ -1,0 +1,66 @@
+.weather-search {
+    display: flex;
+    justify-content: center;
+    width: 900px;
+    margin: 0 auto;
+    max-width: 100%;
+    color: #fff;
+}
+  
+  .weather-search form {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .weather-search form input {
+    font-size: 2rem;
+    height: 40px;
+    border-bottom: 1px solid;
+  }
+  
+  .weather-search form input::placeholder {
+    color: currentColor; 
+  }
+  
+  .weather-search form button {
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    padding: 15px 20px;
+    margin-left: 15px;
+    border-radius: 5px;
+    background: #ff1e42;
+    transition: background 0.3s ease-in-out;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .weather-search form button:hover {
+    background: #c3112d;
+  }
+  
+  .weather-search form .msg {
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    max-width: 450px;
+    min-height: 40px;
+  }
+  
+  @media screen and (max-width: 992px) {
+    .heading,  
+    .weather-search form {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .weather-search form input,
+    .weather-search form button {
+      width: 100%;
+    }
+  
+    .weather-search form button {
+      margin: 20px 0 0 0;
+    }
+  }

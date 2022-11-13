@@ -1,0 +1,20 @@
+.weather-wrap {
+    display: flex;
+    align-items: stretch;
+    flex-flow: column;
+    min-height: 100%;
+    padding: 0 20px;
+}
+
+app-weather-cities {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-grow: 1;
+    margin-top: 50px;
+}
+
+app-weather-profile, app-weather-search {
+    display: block;
+    margin-top: 100px;
+}

@@ -1,7 +1,11 @@
 <div class="weather-cities">
-    <app-weather-city 
-        *ngFor="let city of obs | async"
-        [weatherCity] = "city">
-    </app-weather-city>
+    <div class="weather-cities__items">
+        <app-weather-city 
+            *ngFor="let city of obs | async"
+            [weatherCity] = "city">
+        </app-weather-city>
+    </div>
+    <div class="weather-paginator">
+        <mat-paginator [pageSizeOptions]="[5, 10, 15]"></mat-paginator>
+    </div>
 </div>
-<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>

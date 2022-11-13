@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Subject, switchMap, debounceTime, distinctUntilChanged } from 'rxjs';
+import { Subject, switchMap, debounceTime, throwError, catchError, of, distinctUntilChanged } from 'rxjs';
 import { WeatherService } from '../services/weather.service';
-import { map } from 'rxjs/operators';
+import { ProfileService } from '../services/profile.service';
+import { WeatherCity } from '../interfaces/weather-city.interface';
+import { HttpErrorResponse } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
   selector: 'app-weather-search',
   templateUrl: './weather-search.component.html',
@@ -19,10 +24,23 @@ export class WeatherSearchComponent implements OnInit {
     location: new FormControl()
   })
 
-  constructor(private weatherService: WeatherService) { }
+  constructor(private weatherService: WeatherService, private profileService: ProfileService, 
+    private snackBar: MatSnackBar) { }
 
-  onSubmit(e: Event, form: FormGroup) {
+  onSubmit(form: FormGroup) {
     this.weatherService.searchWeatherData(form.value.location)
+    .pipe(
+      catchError((error: HttpErrorResponse) => {
+        setTimeout(() => {
+          this.snackBar.open(`City not found!`, 'Done', {
+            duration: 100000,
+            verticalPosition: "bottom",
+            horizontalPosition: "center",
+            panelClass: ["error-notification"]
+          });
+        });
+        return throwError(() => of(error));
+    }))
     .subscribe((data: any) => {
       const weatherCity = { 
         cityname: data.name, 
@@ -46,7 +64,7 @@ export class WeatherSearchComponent implements OnInit {
     this.data !== '' ? this.data = {} : this.data;
   }
 
-  onSearchLocation(event: Event, cityName: string) {
+  onSearchLocation(cityName: string) {
     if (cityName.length > 0) {
       this.searchStream.next(cityName);
     }
@@ -56,13 +74,28 @@ export class WeatherSearchComponent implements OnInit {
     this.weatherService.clearWeatherCities();
   }
 
+  onSaveNew() {
+    const cities = this.weatherService.getWeatherCities().map((el: WeatherCity) => el.cityname);
+    this.profileService.saveNewProfile(cities);
+  } 
+
   ngOnInit() {
     this.searchStream
     .pipe(
       debounceTime(700),
       distinctUntilChanged(),
-      switchMap((input: string) => this.weatherService.searchWeatherData(input))
-    )
+      switchMap((input: string) => this.weatherService.searchWeatherData(input)),
+      catchError((error: HttpErrorResponse) => {
+        setTimeout(() => {
+          this.snackBar.open(`City not found!`, 'Done', {
+            duration: 100000,
+            verticalPosition: "bottom",
+            horizontalPosition: "center",
+            panelClass: ["error-notification"]
+          });
+        });
+        return throwError(() => of(error));
+    }), untilDestroyed(this))
       .subscribe((data: any) => {
         this.data = data;
         return this.data;

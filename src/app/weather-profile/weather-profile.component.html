@@ -1,9 +1,29 @@
-<h3>Saved Profiles</h3>
-<button (click) = "onSaveNew()">Save list to Profile</button>
-    <article class="profile" *ngFor="let profile of profiles">
-    <div  (click) = "onLoadProfile(profile)">
-        <h4>{{profile.profileName}}</h4>
-        <p>{{profile.cities.join(', ')}} </p>
+<section class="weather-current">
+  <h2 class="weather-current__title">Curent city</h2>
+  <app-weather-city 
+      *ngIf="currentWeatherCity"
+      [weatherCity] = "currentWeatherCity"
+      [currentWeatherCity] = "true">
+    </app-weather-city>
+</section>
+<section class="weather-profile">
+    <h3 class="weather-profile__title">{{profiles.length > 0 ? 'Lists of cities' : 'No data here'}}</h3>
+    <div class="weather-profile__item"  *ngFor="let profile of profiles; let i = index">
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{profile.profileName}}
+              </mat-panel-title>
+              <mat-panel-description>
+                <button mat-button color="warn" type="button" (click)="onDeleteProfile(i)">Remove</button>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <ul class="weather-profile__list">
+              <li class="weather-profile__item" *ngFor="let city of profile.cities">{{ city }}</li>
+            </ul>
+            <button mat-button color="primary" (click) = "onLoadProfile(profile)">Load</button>
+        </mat-expansion-panel>
     </div>
-    <span class="delete" (click)="onDeleteProfile($event,profile)">X</span>
-</article>
+</section>
+
+

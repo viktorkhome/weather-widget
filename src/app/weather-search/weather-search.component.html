@@ -1,11 +1,13 @@
-<div class="weather-search">
-  <form [formGroup]="locationGroup" novalidate>
-    <mat-form-field class="example-full-width">
-      <input #location matInput formControlName="location" placeholder="Insert city..." type="text" id="city" name="city" 
-      (input)="onSearchLocation($event, location.value)" [required]="true">
-    </mat-form-field>
-    <button mat-button color="primary" type="submit" (click)="onSubmit($event, locationGroup)">Add city</button>
-    <button mat-button color="accent" type="button">Save all cities</button>
-    <button mat-button color="warn" type="button" (click)="clearWeatherData()">Clear all cities</button>
+<section class="weather-search">
+  <form [formGroup]="locationGroup">
+    <input #location matInput 
+      formControlName="location" 
+      id="city" name="city" type="text" 
+      placeholder="Search for a city" 
+      (input)="onSearchLocation(location.value)" [required]="true"
+      autofocus>
+    <button type="submit" (click)="onSubmit(locationGroup)">Add city</button>
+    <button type="button" (click) = "onSaveNew()">Save new list</button>
+    <button type="button" (click)="clearWeatherData()">Clear all</button>
   </form>
-</div>
+</section>

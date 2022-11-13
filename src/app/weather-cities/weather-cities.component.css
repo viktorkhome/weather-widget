@@ -1,0 +1,26 @@
+
+ .weather-cities {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .weather-cities__items {
+    display: flex;
+    font-size: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex: 1;
+  }
+
+  .weather-paginator {
+    width: 900px;
+    max-width: 100%;
+    margin: 50px auto;
+  }
+
+  @media screen and (max-width: 992px) {
+    .weather-paginator {
+      width: 100%;
+    }
+  }

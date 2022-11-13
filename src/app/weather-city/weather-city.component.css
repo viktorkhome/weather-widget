@@ -1,0 +1,225 @@
+.container {
+    flex: 1;
+    flex-grow: 1;
+    border-radius: 25px;
+    -webkit-box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.2);
+    background-color: #222831;
+    color: #ffffff;
+    height: 400px;
+    width: 650px;
+    margin: 20px;
+  }
+
+  .container.default {
+    background-color: #4b5058;
+  }
+
+  .container.default .info-side__badge {
+    display: block;
+  }
+  
+  .weather-side {
+    position: relative;
+    height: 100%;
+    border-radius: 25px;
+    width: 300px;
+    -webkit-box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.2);
+    -webkit-transition: -webkit-transform 300ms ease;
+    transition: -webkit-transform 300ms ease;
+    -o-transition: transform 300ms ease;
+    transition: transform 300ms ease;
+    transition: transform 300ms ease, -webkit-transform 300ms ease;
+    -webkit-transform: translateZ(0) scale(1.02) perspective(1000px);
+            transform: translateZ(0) scale(1.02) perspective(1000px);
+    float: left;
+  }
+  
+  .weather-side:hover {
+    -webkit-transform: scale(1.1) perspective(1500px) rotateY(10deg);
+            transform: scale(1.1) perspective(1500px) rotateY(10deg);
+  }
+  
+  .weather-gradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: var(--gradient);
+    border-radius: 25px;
+    opacity: 0.8;
+  }
+  
+  .weather-icon {
+    display: block;
+    position: relative;
+    width: 150px;
+    margin: 100px auto;
+  }
+  
+  .weather-icon img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .date-container {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+  }
+  
+  .date-dayname {
+    margin: 0;
+  }
+  
+  .date-day {
+    display: block;
+  }
+  
+  .location {
+    display: inline-block;
+    margin-top: 10px;
+  }
+  
+  .location-icon {
+    display: inline-block;
+    height: 0.8em;
+    width: auto;
+    margin-right: 5px;
+  }
+  
+  .weather-container {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+  }
+  
+  .weather-icon.feather {
+    height: 60px;
+    width: auto;
+  }
+  
+  .weather-temp {
+    margin: 0;
+    font-weight: 700;
+    font-size: 3em;
+  }
+  
+  .weather-desc {
+    margin: 0;
+  }
+  
+  .info-side {
+    position: relative;
+    float: left;
+    height: 100%;
+    padding-top: 25px;
+  }
+
+  .info-side__badge {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    right:0;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #222831;
+    padding: 5px;
+    width: 150px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0px 8px 20px 1px rgba(0,0,0,0.75);
+    display: none;
+  }
+
+  .info-side__badge span {
+    color: #fff;
+  }
+  
+  .today-info {
+    padding: 15px;
+    margin: 0 25px 25px 25px;
+    border-radius: 10px;
+  }
+  
+  .today-info>div:not(:last-child) {
+    margin: 0 0 10px 0;
+  }
+  
+  .today-info>div .title {
+    float: left;
+    font-weight: 700;
+    width: 180px;
+  }
+  
+  .today-info>div .value {
+    float: right;
+  }
+  
+  .location-container {
+    padding: 25px 35px;
+  }
+  
+  .location-button {
+    outline: none;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    border: none;
+    border-radius: 25px;
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+    background-image: var(--gradient);
+    color: #ffffff;
+    font-weight: 700;
+    -webkit-box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    -webkit-transition: -webkit-transform 200ms ease;
+    transition: -webkit-transform 200ms ease;
+    -o-transition: transform 200ms ease;
+    transition: transform 200ms ease;
+    transition: transform 200ms ease, -webkit-transform 200ms ease;
+  }
+  
+  .location-button:hover {
+    -webkit-transform: scale(0.95);
+        -ms-transform: scale(0.95);
+            transform: scale(0.95);
+  }
+  
+  .location-button .feather {
+    height: 1em;
+    width: auto;
+    margin-right: 5px;
+  }
+
+  @media screen and (max-width: 992px) {
+    .container {
+      width: 306px;
+      height: auto;
+    }
+
+    .weather-side {
+      width: 100%;
+      float: none;
+      overflow: hidden;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    
+    .info-side {
+      width: 100%;
+      float: none;
+    }
+
+    .today-info {
+      padding: 0px;
+    }
+
+    .today-info>div .title {
+      width: 167px;
+    }
+  }
