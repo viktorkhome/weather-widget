@@ -3,7 +3,7 @@
     <div class="weather-gradient"></div>
     <div class="date-container">
       <h2 class="date-dayname">{{ weatherCity.cityname }}</h2>
-      <span class="location">UA</span>
+      <span class="location">{{ weatherCity.country }}</span>
     </div>
     <div class="weather-icon">
       <img src="{{ weatherIconUrl }}{{weatherCity.icon }}{{ weatherIconSize }}"/>
@@ -15,30 +15,20 @@
   </div>
   <div class="info-side">
     <div class="today-info-container">
-      <div class="info-side__badge" *ngIf = "currentWeatherCity" >
-        <span>Current city</span>
-      </div>
       <div class="today-info">
         <div class="today-info-el"> <span class="title">FEELS LIKE:</span><span class="value">{{weatherCity.temp}} °C</span>
-          <div class="clear"></div>
         </div>
         <div class="today-info-el"> <span class="title">HUMIDITY:</span><span class="value">{{weatherCity.humidity}} %</span>
-          <div class="clear"></div>
         </div>
         <div class="today-info-el"> <span class="title">WIND SPEED:</span><span class="value">{{weatherCity.wind_speed}} km/h</span>
-          <div class="clear"></div>
         </div>
         <div class="today-info-el"> <span class="title">WIND DEGREE:</span><span class="value">{{weatherCity.wind_deg}}</span>
-          <div class="clear"></div>
         </div>
         <div class="today-info-el"> <span class="title">WIND GUST:</span><span class="value">{{weatherCity.wind_gust}} </span>
-          <div class="clear"></div>
         </div>
         <div class="today-info-el"> <span class="title">SEA LEVEL:</span><span class="value">{{weatherCity.humidity}}</span>
-          <div class="clear"></div>
         </div>
         <div class="today-info-el"> <span class="title">GROUND LEVEL:</span><span class="value">{{weatherCity.grnd_level}}</span>
-          <div class="clear"></div>
         </div>
       </div>
       <div class="location-container" *ngIf = "!currentWeatherCity">

@@ -18,7 +18,7 @@ export class ProfileService {
     profiles.push(newProfile);
     this.setToLocalStorage(profiles);
     this.isDataFetched.next(true);
-    this.snackBar.open("Profile saved!", 'Done', {
+    this.snackBar.open("List saved!", 'Done', {
       duration: 2000,
       verticalPosition: "top",
       horizontalPosition: "center"

@@ -22,7 +22,7 @@ export class WeatherService {
       .pipe(
         switchMap((position: Position) => {
           if(position) {
-            return this._http.get(`${this.API_URL}lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${this.APPID}`)
+            return this._http.get(`${this.API_URL}lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${this.APPID}&units=metric`)
             .pipe(
               map((response: any) => response as WeatherCity),
               catchError((error: HttpErrorResponse) => {

@@ -5,7 +5,7 @@
             [weatherCity] = "city">
         </app-weather-city>
     </div>
-    <div class="weather-paginator">
+    <div class="weather-paginator" *ngIf="weatherCities.length > 0">
         <mat-paginator [pageSizeOptions]="[5, 10, 15]"></mat-paginator>
     </div>
 </div>

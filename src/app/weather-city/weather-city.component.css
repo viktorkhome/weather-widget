@@ -1,3 +1,4 @@
+
 .container {
     flex: 1;
     flex-grow: 1;
@@ -9,16 +10,13 @@
     height: 400px;
     width: 650px;
     margin: 20px;
+    display: flex;
   }
 
   .container.default {
     background-color: #4b5058;
   }
 
-  .container.default .info-side__badge {
-    display: block;
-  }
-  
   .weather-side {
     position: relative;
     height: 100%;
@@ -33,7 +31,6 @@
     transition: transform 300ms ease, -webkit-transform 300ms ease;
     -webkit-transform: translateZ(0) scale(1.02) perspective(1000px);
             transform: translateZ(0) scale(1.02) perspective(1000px);
-    float: left;
   }
   
   .weather-side:hover {
@@ -72,6 +69,7 @@
   
   .date-dayname {
     margin: 0;
+    font-size: 30px;
   }
   
   .date-day {
@@ -104,7 +102,7 @@
   .weather-temp {
     margin: 0;
     font-weight: 700;
-    font-size: 3em;
+    font-size: 50px;
   }
   
   .weather-desc {
@@ -113,7 +111,6 @@
   
   .info-side {
     position: relative;
-    float: left;
     height: 100%;
     padding-top: 25px;
   }
@@ -143,19 +140,25 @@
     margin: 0 25px 25px 25px;
     border-radius: 10px;
   }
+
+  .today-info-el {
+    display: flex;
+    justify-content: space-between;
+  }
   
   .today-info>div:not(:last-child) {
     margin: 0 0 10px 0;
   }
   
   .today-info>div .title {
-    float: left;
     font-weight: 700;
     width: 180px;
+    font-size: 18px;
   }
-  
+
   .today-info>div .value {
-    float: right;
+    font-weight: 500;
+    font-size: 18px;
   }
   
   .location-container {
@@ -200,11 +203,11 @@
     .container {
       width: 306px;
       height: auto;
+      flex-flow: column;
     }
 
     .weather-side {
       width: 100%;
-      float: none;
       overflow: hidden;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
@@ -212,7 +215,6 @@
     
     .info-side {
       width: 100%;
-      float: none;
     }
 
     .today-info {
